@@ -1,0 +1,66 @@
+---
+title: "Quick Settings Tile"
+description: "Add OpenCalc to the Android Quick Settings panel for one-tap access from anywhere, including the lock screen."
+---
+
+OpenCalc can be added to Android's Quick Settings panel — the row of tiles that appears when you swipe down from the top of your screen. Once added, the tile opens the calculator instantly from anywhere on the device.
+
+---
+
+## Adding the tile
+
+<Steps>
+  <Step title="Open the Quick Settings panel">
+    Swipe down from the top of your screen, then swipe down again to expand the full Quick Settings panel.
+  </Step>
+  <Step title="Enter edit mode">
+    Tap the **pencil (edit) icon** at the bottom of the panel. The exact position varies by device manufacturer, but it is typically in the lower-left or lower-right corner.
+  </Step>
+  <Step title="Find the OpenCalc tile">
+    Scroll through the list of available tiles until you see **OpenCalc**.
+  </Step>
+  <Step title="Drag it into the active area">
+    Drag the OpenCalc tile up into the active tile section. Release to place it.
+  </Step>
+  <Step title="Exit edit mode">
+    Tap the back button or **Done** to exit edit mode.
+  </Step>
+</Steps>
+
+<Note>
+  The steps above describe stock Android. Samsung One UI, Xiaomi MIUI, and other manufacturer skins may show the edit mode differently, but the general process of long-pressing or tapping an edit icon is the same.
+</Note>
+
+---
+
+## Using the tile
+
+Tap the OpenCalc tile in Quick Settings to launch the app. The panel collapses and OpenCalc opens immediately.
+
+- On **Android 14 (Upside Down Cake) and higher**, the tile uses `startActivityAndCollapse` with a `PendingIntent`, which is the required API on newer versions.
+- On **Android 13 and below**, the tile calls `startActivity` with `FLAG_ACTIVITY_NEW_TASK` directly.
+
+In both cases, the behavior from your perspective is the same: one tap opens OpenCalc.
+
+---
+
+## Lock screen access
+
+OpenCalc can be displayed over the lock screen, so you can open it from the Quick Settings tile without unlocking your device first.
+
+This is controlled by the **Show on lock screen** setting (enabled by default). When active, OpenCalc sets the `SHOW_WHEN_LOCKED` and `TURN_SCREEN_ON` flags so the app appears above the lock screen.
+
+<Tabs>
+  <Tab title="Android 8.1+">
+    Uses `setShowWhenLocked(true)` and `setTurnScreenOn(true)` — the modern API introduced in API 27.
+  </Tab>
+  <Tab title="Android 8.0 and below">
+    Uses the legacy `FLAG_SHOW_WHEN_LOCKED` and `FLAG_TURN_SCREEN_ON` window flags.
+  </Tab>
+</Tabs>
+
+To disable this behavior, go to **Settings → Show on lock screen** and turn it off.
+
+<Warning>
+  When the app is shown over the lock screen, anyone with physical access to the device can open the calculator without entering a PIN or biometric. If this is a concern, disable the setting.
+</Warning>

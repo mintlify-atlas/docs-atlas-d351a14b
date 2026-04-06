@@ -1,0 +1,124 @@
+---
+title: "Scientific Mode"
+description: "Use trigonometry, logarithms, roots, factorials, and mathematical constants in OpenCalc's scientific mode."
+---
+
+Scientific mode adds two rows of advanced function buttons above the standard keypad. All scientific functions are evaluated using `BigDecimal` arithmetic for high precision, and results respect the configured decimal precision from Settings.
+
+---
+
+## Enabling scientific mode
+
+In portrait orientation, scientific mode has three states controlled from **Settings → Scientific mode**:
+
+<Tabs>
+  <Tab title="Toggle (default)">
+    A small arrow button appears at the top of the keypad. Tap it to **show** or **hide** the scientific rows at any time. This is the default state — the toggle button is visible and the rows start collapsed.
+  </Tab>
+  <Tab title="Always open">
+    The scientific rows are expanded and the toggle button is visible, but the rows are pre-expanded when you open the app.
+  </Tab>
+  <Tab title="Hidden">
+    The toggle button and all scientific rows are removed. The app shows only the standard calculator layout.
+  </Tab>
+</Tabs>
+
+<Note>
+  In **landscape orientation**, the scientific keys are always visible regardless of this setting. Rotating your device is the quickest way to access scientific functions without changing settings.
+</Note>
+
+---
+
+## Degree and radian mode
+
+Trigonometric functions operate in **degrees by default**. The current mode is shown as a label next to the degree/radian toggle button.
+
+- A text label ("Degree" or "Radian") shows the **current active mode**.
+- The toggle button next to it shows the **other mode** — tap it to switch. The label and live preview update immediately.
+
+To make radians the default when the app starts, enable **Use radians by default** in Settings.
+
+---
+
+## Supported functions
+
+### Trigonometry
+
+| Button | Function | Notes |
+|---|---|---|
+| `sin` | Sine | Degrees or radians depending on mode |
+| `cos` | Cosine | Degrees or radians depending on mode |
+| `tan` | Tangent | Error if argument is 90° (undefined) |
+| `sin⁻¹` | Inverse sine (arcsin) | Domain: [−1, 1]; result in current angle unit |
+| `cos⁻¹` | Inverse cosine (arccos) | Domain: [−1, 1]; result in current angle unit |
+| `tan⁻¹` | Inverse tangent (arctan) | No domain restriction |
+
+### Logarithms and exponentials
+
+| Button | Function | Notes |
+|---|---|---|
+| `ln` | Natural logarithm (base e) | Domain: x > 0 |
+| `log` | Common logarithm (base 10) | Domain: x > 0 |
+| `log₂` | Logarithm base 2 | Domain: x > 0 |
+| `exp` | e raised to the power x (eˣ) | Available via INV — see below |
+
+### Powers and roots
+
+| Button | Function | Notes |
+|---|---|---|
+| `√` | Square root | Domain: x ≥ 0; uses `BigDecimal.sqrt` on API 33+, Newton's method on older devices |
+| `^` | Exponentiation | Shared with standard mode; supports fractional exponents |
+| `x²` | Square (x²) | Available via INV when modulo button is disabled |
+
+### Other functions
+
+| Button | Function | Notes |
+|---|---|---|
+| `n!` | Factorial | Integer inputs use exact `BigInteger` arithmetic; non-integers use the Lanczos gamma approximation; values ≥ 3000 overflow to infinity |
+
+---
+
+## Mathematical constants
+
+| Button | Value | Notes |
+|---|---|---|
+| `π` | 3.14159265358979… | Inserting π next to a number automatically adds a `×` operator |
+| `e` | 2.71828182845904… | Euler's number; inserting e next to a number also adds `×` |
+
+---
+
+## INV — inverse functions
+
+Tapping **INV** switches the scientific function buttons to their inverses. Tap INV again to return to normal. The substitutions are:
+
+| Normal | INV variant |
+|---|---|
+| `sin` | `sin⁻¹` (arcsin) |
+| `cos` | `cos⁻¹` (arccos) |
+| `tan` | `tan⁻¹` (arctan) |
+| `ln` | `exp` (eˣ) |
+| `log` | `10^` |
+| `log₂` | `2^` |
+| `√` | `x²` (or `#` modulo if the modulo button is enabled in Settings) |
+
+<Note>
+  INV does not toggle degree/radian mode. Use the separate degree/radian button for that.
+</Note>
+
+---
+
+## Error conditions
+
+Scientific functions surface errors inline in the result display. The input text turns red to indicate a problem:
+
+<AccordionGroup>
+  <Accordion title="Domain error">
+    Returned when the argument is outside the function's valid domain — for example, `ln(0)`, `sqrt(-1)`, or `arcsin(2)`.
+  </Accordion>
+  <Accordion title="Requires real number">
+    Returned when a negative base is raised to a fractional power, such as `(-8)^0.5`, which has no real solution.
+  </Accordion>
+  <Accordion title="Value too large / Infinity">
+    Returned when a result exceeds representable range — for example, `factorial(3000)` or very large exponents.
+  </Accordion>
+</AccordionGroup>

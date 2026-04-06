@@ -1,80 +1,88 @@
 ---
-title: "Quickstart"
-description: "Start building awesome documentation in minutes"
+title: "Quick Start"
+description: "Get up and running with OpenCalc in minutes. Learn the basic interface, run your first calculation, and discover key shortcuts."
 ---
 
-## Get started in three steps
+## Get started with OpenCalc
 
-Get your documentation site running locally and make your first customization.
+This guide walks you through installing OpenCalc, understanding the interface, and completing your first calculation. The whole process takes under five minutes.
 
-### Step 1: Set up your local environment
+<Steps>
+  <Step title="Download and install">
+    If you have not installed OpenCalc yet, choose your preferred distribution channel:
 
-<AccordionGroup>
-  <Accordion icon="copy" title="Clone your docs locally">
-    During the onboarding process, you created a GitHub repository with your docs content if you didn't already have one. You can find a link to this repository in your [dashboard](https://dashboard.mintlify.com).
-    
-    To clone the repository locally so that you can make and preview changes to your docs, follow the [Cloning a repository](https://docs.github.com/en/repositories/creating-and-managing-repositories/cloning-a-repository) guide in the GitHub docs.
-  </Accordion>
-  <Accordion icon="rectangle-terminal" title="Start the preview server">
-    1. Install the Mintlify CLI: `npm i -g mint`
-    2. Navigate to your docs directory and run: `mint dev`
-    3. Open `http://localhost:3000` to see your docs live!
-    
-    <Tip>Your preview updates automatically as you edit files.</Tip>
-  </Accordion>
-</AccordionGroup>
+    - **Google Play** — search for *OpenCalc* by Darkempire78 and tap **Install**.
+    - **F-Droid** — search for *OpenCalc* in the F-Droid client and tap **Install**.
+    - **GitHub** — download the latest APK from the [releases page](https://github.com/Darkempire78/OpenCalc/releases/latest) and sideload it.
 
-### Step 2: Deploy your changes
+    See the [Installation](/installation) page for step-by-step instructions for each method.
+  </Step>
+  <Step title="Open the app and explore the interface">
+    Tap the OpenCalc icon in your app drawer. You will see the main calculator screen, which has three main areas:
 
-<AccordionGroup>
-  <Accordion icon="github" title="Install our GitHub app">
-    Install the Mintlify GitHub app from your [dashboard](https://dashboard.mintlify.com/settings/organization/github-app).
-    
-    Our GitHub app automatically deploys your changes to your docs site, so you don't need to manage deployments yourself.
-</Accordion>
-<Accordion icon="palette" title="Update your site name and colors">
-    For a first change, let's update the name and colors of your docs site.
+    **Input field (top)**
+    The horizontal text area at the top of the screen shows your current expression as you type it. The cursor is always active here — you can tap within the expression to reposition it and edit any part of your calculation.
 
-    1. Open `docs.json` in your editor.
-    2. Change the `"name"` field to your project name.
-    3. Update the `"colors"` to match your brand.
-    4. Save and see your changes instantly at `http://localhost:3000`.
+    **Result display (below the input)**
+    As you enter an expression, OpenCalc evaluates it in real time and shows the running result in smaller text directly below the input field. You do not need to press equals to see a result — it updates with every keystroke.
 
-    <Tip>Try changing the primary color to see an immediate difference!</Tip>
-  </Accordion>
-</AccordionGroup>
+    **Button pad (bottom)**
+    The main pad contains the digit keys (0–9), arithmetic operators (+, −, ×, ÷), a decimal point, parentheses, a backspace key, a percent key, and the equals button. A row of operator and utility buttons sits above the number pad.
 
-### Step 3: Go live
+    In landscape orientation, or by tapping the expand arrow on the left side of the operator row, you can reveal the **scientific keyboard** with trigonometric functions, logarithms, constants, and more.
+  </Step>
+  <Step title="Enter your first calculation">
+    Try a calculation that exercises operator precedence:
 
-<Accordion icon="rocket" title="Publish your docs">
-  1. Commit and push your changes.
-  2. Your docs will update and be live in moments!
-</Accordion>
+    Tap the following keys in order: `2`, `+`, `3`, `×`, `4`
+
+    Your input field will show: `2+3×4`
+
+    The result display will immediately show `14` — OpenCalc respects standard mathematical order of operations (multiplication before addition), so it evaluates `3×4 = 12` first, then adds `2`.
+
+    If you wanted `(2+3)×4 = 20` instead, tap the `( )` button before `2` to open a parenthesis, and close it after `3`.
+  </Step>
+  <Step title="Confirm the result with equals">
+    Tap the **=** button.
+
+    The input field updates to show the final result (`14`) and the result display below it clears. The calculation is automatically saved to your history.
+
+    If the expression contains a syntax error or an undefined operation (such as division by zero), the input and result display will turn red and show a descriptive error message.
+  </Step>
+  <Step title="Open the history panel">
+    Every calculation you complete is stored in the history panel. To open it:
+
+    - **Swipe up** from the bottom of the calculator screen, or
+    - Tap the **history button** (the small upward-arrow handle) above the button pad.
+
+    The panel slides up to reveal a scrollable list of your past calculations, each showing the original expression and its result. Tap any history entry to paste that value back into the input field and continue working with it.
+
+    To dismiss the history panel, swipe it back down or tap the handle again. Pressing the system back button while the panel is open also collapses it.
+
+    To delete a single history entry, swipe it left or right. To clear all history, open the app menu (three-dot icon in the top-right corner) and tap **Clear history**.
+  </Step>
+</Steps>
+
+## Useful shortcuts
+
+### Backspace and clear
+
+- **Tap** the backspace key (`⌫`) to delete the character immediately to the left of the cursor.
+- **Long-press** the backspace key to clear the entire input field and result display at once.
+
+### Insert double or triple zeros
+
+When entering large numbers, long-press the **0** key to open a popup menu with two options:
+
+- **00** — inserts two zeros at the cursor position.
+- **000** — inserts three zeros at the cursor position.
+
+This saves time when typing numbers like `1,000,000`.
+
+<Tip>
+  Long-press the **result display** to copy the current result to your clipboard. On Android 12 and below, a toast notification confirms the copy. You can then paste the value into any other app.
+</Tip>
 
 ## Next steps
 
-Now that you have your docs running, explore these key features:
-
-<CardGroup cols={2}>
-
-<Card title="Write Content" icon="pen-to-square" href="/essentials/markdown">
-  Learn MDX syntax and start writing your documentation.
-</Card>
-
-<Card title="Customize style" icon="palette" href="/essentials/settings">
-  Make your docs match your brand perfectly.
-</Card>
-
-<Card title="Add code examples" icon="square-code" href="/essentials/code">
-  Include syntax-highlighted code blocks.
-</Card>
-
-<Card title="API documentation" icon="code" href="/api-reference/introduction">
-  Auto-generate API docs from OpenAPI specs.
-</Card>
-
-</CardGroup>
-
-<Note>
-  **Need help?** See our [full documentation](https://mintlify.com/docs) or join our [community](https://mintlify.com/community).
-</Note>
+Once you are comfortable with the basics, explore the rest of the documentation to learn about scientific mode, themes, the quick settings tile, and app preferences.

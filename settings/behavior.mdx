@@ -1,0 +1,115 @@
+---
+title: "Behavior Settings"
+description: "Control how OpenCalc responds to input — haptics, history, angle units, button layout, and more."
+---
+
+Behavior settings change how the calculator acts when you interact with it, rather than how it looks.
+
+## Input & feedback
+
+<AccordionGroup>
+  <Accordion title="Vibration">
+    Toggles haptic feedback (a brief vibration) every time you press a key.
+
+    **Default:** On (`true`)
+
+    Disable this if you prefer silent input or if you are in a situation where vibrations are disruptive.
+  </Accordion>
+  <Accordion title="Long click to copy value">
+    When enabled, long-pressing the result display copies the current value to your clipboard.
+
+    **Default:** On (`true`)
+
+    This provides a quick way to transfer results to other apps without manually selecting and copying text.
+  </Accordion>
+  <Accordion title="Prevent phone from sleeping">
+    Keeps the screen on while OpenCalc is in the foreground, overriding the system screen-timeout.
+
+    **Default:** Off (`false`)
+
+    Useful when you need to reference a result over a long period without the screen turning off.
+  </Accordion>
+  <Accordion title="Show on lock screen">
+    Allows OpenCalc to display on the lock screen so you can perform quick calculations without unlocking your device.
+
+    **Default:** On (`true`)
+  </Accordion>
+</AccordionGroup>
+
+---
+
+## History
+
+<AccordionGroup>
+  <Accordion title="History size">
+    Sets the maximum number of calculation entries stored in history.
+
+    **Default:** `50`
+
+    | Value | Behavior |
+    |---|---|
+    | Any positive integer | Keeps that many entries; oldest entries are removed first |
+    | `-1` | Unlimited — all calculations are retained |
+    | `0` | Disabled — no history is saved |
+  </Accordion>
+  <Accordion title="Delete history on swipe">
+    When enabled, swiping left or right on a history entry deletes it.
+
+    **Default:** On (`true`)
+
+    Disable this if you accidentally remove entries while scrolling through history.
+  </Accordion>
+  <Accordion title="Auto-save calculation without equal button">
+    Automatically saves the current expression and its running result to history while you type, without requiring you to press **=**.
+
+    **Default:** On (`true`)
+
+    When off, a calculation is only saved to history after you explicitly press **=**.
+  </Accordion>
+</AccordionGroup>
+
+---
+
+## Calculation
+
+<AccordionGroup>
+  <Accordion title="Use radians by default">
+    Sets the default angle unit for trigonometric functions.
+
+    **Default:** Off (`false`) — degrees are used by default
+
+    Enable this to start every session in radians mode. You can still toggle the unit from the scientific mode panel at any time.
+  </Accordion>
+  <Accordion title="Add modulo button">
+    Shows a **#** (modulo) button in the scientific mode panel. When enabled, the INV variant of the √ button changes to insert `#` instead of `x²`.
+
+    **Default:** On (`true`)
+
+    Disable this to declutter the scientific panel if you never use modulo.
+  </Accordion>
+</AccordionGroup>
+
+---
+
+## Button layout
+
+<AccordionGroup>
+  <Accordion title="Split parenthesis button">
+    Replaces the smart parenthesis toggle with two separate buttons: **(** and **)**.
+
+    **Default:** Off (`false`)
+
+    The smart toggle automatically inserts the correct parenthesis based on context. Enable the split option if you prefer explicit control over each parenthesis.
+  </Accordion>
+  <Accordion title="Move back button left">
+    Repositions the backspace (⌫) key to the left side of the keypad.
+
+    **Default:** Off (`false`)
+
+    Enable this if you find it more comfortable to reach the backspace key on the left side, for example when holding the phone in your right hand.
+  </Accordion>
+</AccordionGroup>
+
+<Note>
+  Button layout changes take effect immediately. You do not need to restart the app.
+</Note>

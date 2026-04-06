@@ -1,0 +1,104 @@
+---
+title: "Installation"
+description: "Install OpenCalc on your Android device from Google Play, F-Droid, IzzyOnDroid, or directly from a GitHub APK."
+---
+
+## Overview
+
+OpenCalc is distributed through four channels. All of them install the same open-source application — the difference lies in how updates are delivered and whether Google services are involved.
+
+<Note>
+  OpenCalc requires **Android 5.0 (Lollipop) or later**. Any Android device running API level 21 or above is supported.
+</Note>
+
+## Choose your installation method
+
+<Tabs>
+  <Tab title="Google Play">
+    Google Play is the easiest option for most Android users. Updates are delivered automatically in the background.
+
+    **Steps:**
+
+    1. Open the **Google Play Store** on your Android device.
+    2. Search for **OpenCalc** — look for the app by *Darkempire78*.
+    3. Tap **Install**.
+    4. Once installed, tap **Open** or find OpenCalc in your app drawer.
+
+    You can also go directly to the listing using the link below:
+
+    [Get OpenCalc on Google Play](https://play.google.com/store/apps/details?id=com.darkempire78.opencalculator)
+  </Tab>
+  <Tab title="F-Droid">
+    F-Droid is a free and open-source app repository for Android. It does not require a Google account and builds apps directly from source code, so you can independently verify what you are installing.
+
+    <Note>
+      F-Droid is the most privacy-respecting installation option. It requires no Google account, no Google Play Services, and no tracking. If privacy is a priority, this is the recommended choice.
+    </Note>
+
+    **Steps:**
+
+    1. If you have not already, [download and install the F-Droid client](https://f-droid.org/) APK from the official F-Droid website.
+    2. Open the F-Droid app and tap the **Search** icon.
+    3. Search for **OpenCalc**.
+    4. Tap the OpenCalc entry, then tap **Install**.
+    5. F-Droid will download and install the app. You may be prompted to allow installation from unknown sources the first time you use F-Droid.
+
+    Direct link to the package: [f-droid.org/en/packages/com.darkempire78.opencalculator](https://f-droid.org/en/packages/com.darkempire78.opencalculator)
+
+    **Note on update timing:** F-Droid builds apps from source on its own schedule. New versions of OpenCalc may appear on F-Droid a few days after a GitHub release.
+  </Tab>
+  <Tab title="IzzyOnDroid">
+    IzzyOnDroid is a community-maintained F-Droid-compatible repository. It tends to ship new releases faster than the main F-Droid repository because it distributes upstream APKs directly rather than building from source.
+
+    **Steps:**
+
+    1. Add the IzzyOnDroid repository to your F-Droid client:
+       - Open F-Droid, go to **Settings → Repositories**.
+       - Tap the **+** button and enter the repository URL:
+         ```text
+         https://apt.izzysoft.de/fdroid/repo
+         ```
+    2. F-Droid will refresh its index. Search for **OpenCalc**.
+    3. Tap **Install**.
+
+    Alternatively, visit the package page directly in a browser:
+    [apt.izzysoft.de/packages/com.darkempire78.opencalculator](https://apt.izzysoft.de/packages/com.darkempire78.opencalculator)
+  </Tab>
+  <Tab title="GitHub (APK sideload)">
+    You can download a signed APK directly from the OpenCalc GitHub Releases page. This is useful if you want a specific version, if you are on a network that blocks app stores, or if you are setting up a device programmatically.
+
+    <Steps>
+      <Step title="Enable installation from unknown sources">
+        On Android 8.0 and later, you grant permission per app rather than globally.
+
+        Go to **Settings → Apps → Special app access → Install unknown apps**, then select the browser or file manager you will use to open the APK, and enable **Allow from this source**.
+
+        On Android 7.1 and earlier, go to **Settings → Security** and enable **Unknown sources**.
+      </Step>
+      <Step title="Download the APK from GitHub">
+        Open your browser and navigate to the latest release:
+
+        [github.com/Darkempire78/OpenCalc/releases/latest](https://github.com/Darkempire78/OpenCalc/releases/latest)
+
+        Under **Assets**, tap the file ending in `.apk` to download it. Wait for the download to complete.
+      </Step>
+      <Step title="Open the downloaded APK">
+        Pull down your notification shade and tap the completed download notification, or open your **Downloads** folder in a file manager and tap the APK file.
+      </Step>
+      <Step title="Review and confirm installation">
+        Android will show a confirmation screen listing the app name and package ID (`com.darkempire78.opencalculator`). Tap **Install**.
+      </Step>
+      <Step title="Open OpenCalc">
+        Once installation completes, tap **Open** to launch the app, or find it in your app drawer.
+      </Step>
+    </Steps>
+
+    <Warning>
+      Sideloaded apps do not receive automatic updates. To stay up to date, revisit the GitHub Releases page periodically and repeat the process, or switch to F-Droid / IzzyOnDroid which handle updates automatically.
+    </Warning>
+  </Tab>
+</Tabs>
+
+## Android version requirement
+
+OpenCalc requires **Android 5.0 (API level 21)** or later. This covers virtually all Android devices manufactured from 2014 onward. If your device runs an older version of Android, the app will not install.

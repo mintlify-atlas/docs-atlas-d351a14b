@@ -1,0 +1,90 @@
+---
+title: "Display Settings"
+description: "Customize how OpenCalc looks — theme, number formatting, precision, and the scientific mode panel."
+---
+
+Display settings control the visual appearance of the calculator and how results are formatted and shown.
+
+## Theme
+
+Choose the color scheme for OpenCalc. Open **Settings → Theme** to pick one of the following options.
+
+| Option | Description |
+|---|---|
+| System | Follows your device's light/dark mode. On Android 12+ with dynamic color enabled, this also applies Material You colors. |
+| Light | Forces the light color scheme regardless of system setting. |
+| Dark | Forces the dark color scheme regardless of system setting. |
+| Amoled | True-black dark theme. Ideal for OLED displays — saves battery and reduces eye strain in dark environments. |
+
+<Tip>
+  If your device supports Material You (Android 12+), the **System** option automatically applies your wallpaper-based accent colors to the calculator.
+</Tip>
+
+---
+
+## Numbering system
+
+Controls how large numbers are grouped with separator characters.
+
+| Option | Grouping pattern | Example |
+|---|---|---|
+| International Numbering System | Groups of 3 digits | 1,234,567 |
+| Indian Numbering System | 3 digits first, then groups of 2 | 12,34,567 |
+
+**Default:** International Numbering System (value `0`)
+
+Changing this setting reloads the calculator immediately so all displayed numbers update.
+
+---
+
+## Number precision
+
+Sets the maximum number of decimal places shown in calculation results.
+
+**Default:** `10`
+
+Enter any positive integer. A higher value preserves more digits after the decimal point; a lower value rounds results more aggressively.
+
+<Note>
+  This setting affects display only. Internal calculations are always performed at full precision before rounding to the configured number of decimal places.
+</Note>
+
+---
+
+## Scientific notation
+
+When enabled, results that are very large or very small are automatically expressed in scientific notation (e.g., `1.23 × 10⁸` instead of `123000000`).
+
+**Default:** Off (`false`)
+
+Enable this setting if you regularly work with values outside the range that fits comfortably on screen.
+
+---
+
+## Scientific mode
+
+Controls whether the scientific mode panel — which adds trigonometric, logarithmic, and other advanced functions — is visible and how it starts.
+
+<AccordionGroup>
+  <Accordion title="Shown, collapsed (default)">
+    The scientific mode panel is visible but starts collapsed. Tap the handle to expand it.
+
+    This corresponds to `NOT_ACTIVE` (value `0`) in the source code.
+  </Accordion>
+  <Accordion title="Shown, expanded">
+    The scientific mode panel is visible and starts fully expanded every time you open the app.
+
+    This corresponds to `ACTIVE` (value `1`) in the source code.
+  </Accordion>
+  <Accordion title="Hidden">
+    The scientific mode panel is completely hidden. The calculator shows only the standard numeric keypad.
+
+    This corresponds to `OFF` (value `2`) in the source code.
+  </Accordion>
+</AccordionGroup>
+
+**Default:** Shown, collapsed (`NOT_ACTIVE`)
+
+<Tip>
+  For everyday arithmetic, **Hidden** gives you a cleaner layout. For scientific work, **Shown, expanded** saves you a tap every time.
+</Tip>

@@ -1,0 +1,91 @@
+---
+title: "Translating OpenCalc"
+description: "Help make OpenCalc accessible to more people by contributing or improving a translation through Hosted Weblate."
+---
+
+OpenCalc is translated entirely through [Hosted Weblate](https://hosted.weblate.org/engage/opencalc/), a web-based translation platform. You don't need to write any code or submit a pull request — everything is handled through the Weblate interface.
+
+<Tip>
+  Translation is one of the most impactful ways to contribute to OpenCalc. No programming experience is required.
+</Tip>
+
+## Supported languages
+
+OpenCalc currently ships with **35+ languages** bundled in the app. The following locale codes are included in the release build:
+
+| Locale code | Language |
+|---|---|
+| `ar` | Arabic |
+| `az` | Azerbaijani |
+| `be` | Belarusian |
+| `bn` | Bengali |
+| `bs` | Bosnian |
+| `cs` | Czech |
+| `de` | German |
+| `el` | Greek |
+| `es` | Spanish |
+| `fa` | Persian |
+| `fr` | French |
+| `hi` | Hindi |
+| `hr` | Croatian |
+| `hu` | Hungarian |
+| `in` | Indonesian |
+| `it` | Italian |
+| `ja` | Japanese |
+| `kn` | Kannada |
+| `mk` | Macedonian |
+| `ml` | Malayalam |
+| `nb-rNO` | Norwegian Bokmål |
+| `nl` | Dutch |
+| `or` | Odia |
+| `pl` | Polish |
+| `pt-rBR` | Portuguese (Brazil) |
+| `ro` | Romanian |
+| `ru` | Russian |
+| `sat` | Santali |
+| `sr` | Serbian |
+| `sv` | Swedish |
+| `tr` | Turkish |
+| `uk` | Ukrainian |
+| `vi` | Vietnamese |
+| `zh-rCN` | Chinese (Simplified) |
+| `zh-rHK` | Chinese (Hong Kong) |
+| `zh-rTW` | Chinese (Traditional) |
+
+Don't see your language? You can request it or start a new translation on Weblate.
+
+## How to contribute a translation
+
+<Steps>
+  <Step title="Go to Weblate">
+    Open the OpenCalc project on Hosted Weblate: [hosted.weblate.org/engage/opencalc](https://hosted.weblate.org/engage/opencalc/)
+  </Step>
+  <Step title="Register an account">
+    Click **Register** to create a free Weblate account. You can also sign in with GitHub, Google, or other OAuth providers.
+  </Step>
+  <Step title="Find OpenCalc">
+    From the OpenCalc project page, select the language component you want to work on. If your language is not listed, use the **Start new translation** option to add it.
+  </Step>
+  <Step title="Translate or review strings">
+    Use the Weblate editor to translate untranslated strings or review existing ones. Changes are automatically synchronized back to the repository.
+
+    <Note>
+      When translating, focus on natural phrasing in the target language rather than a literal word-for-word translation of the English source string.
+    </Note>
+  </Step>
+</Steps>
+
+## Per-app language (Android 13+)
+
+On **Android 13 (API 33) and higher**, users can change OpenCalc's display language independently from the system language. This is configured in **System Settings → Apps → OpenCalc → Language**, using the locale list defined in `res/xml/locales_config.xml`.
+
+<Info>
+  On Android 12 and earlier, the app language follows the system language. Users need to change their device language to switch OpenCalc's language.
+</Info>
+
+## Tips for quality translations
+
+- Use the **glossary** and **translation memory** features in Weblate to stay consistent with existing translations.
+- Check the **source context** shown alongside each string — some strings appear in the calculator UI where space is limited.
+- If a string is ambiguous, leave a **comment** on Weblate for other contributors or the maintainers to clarify.
+- Review strings already marked as translated: community corrections are just as valuable as new translations.

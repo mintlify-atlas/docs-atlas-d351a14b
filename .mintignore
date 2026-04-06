@@ -5,3 +5,10 @@
 # Draft content
 drafts/
 *.draft.mdx
+
+# Boilerplate starter kit files (not part of OpenCalc docs)
+essentials/
+ai-tools/
+api-reference/
+snippets/
+development.mdx

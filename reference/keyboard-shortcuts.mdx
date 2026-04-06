@@ -1,0 +1,94 @@
+---
+title: "Gestures & Interactions"
+description: "Touch gestures and button interactions available in OpenCalc."
+---
+
+## Input field
+
+| Gesture | Action |
+|---|---|
+| Tap a button | Inserts the character or function into the expression at the cursor position |
+| Tap inside the expression | Moves the cursor to that position |
+| Swipe left / right on the input | Scrolls the expression horizontally when it is longer than the screen width |
+
+## Button interactions
+
+### Backspace
+
+| Gesture | Action |
+|---|---|
+| Single tap | Deletes the character (or entire function token, e.g., `sin(`) immediately before the cursor |
+| Long press | Clears the entire input field and the result preview |
+
+### Zero (0)
+
+| Gesture | Action |
+|---|---|
+| Single tap | Inserts `0` |
+| Long press | Opens a popup menu with options to insert `00` or `000` |
+
+### Equals
+
+Pressing **=** evaluates the current expression and replaces the input with the result. The result display is cleared. You can immediately continue typing to use that result in the next calculation.
+
+<Note>
+If you move the cursor after pressing **=**, OpenCalc treats the next tap on a digit as starting a new expression rather than appending to the result.
+</Note>
+
+### Parentheses (smart button)
+
+The single parentheses button inserts either `(` or `)` automatically, based on the balance of open and closed parentheses to the left of the cursor. It opens a new parenthesis when:
+
+- There are no unmatched open parentheses.
+- The character just before the cursor is `(` or an operator (`×`, `÷`, `+`, `-`, `^`).
+
+Otherwise it inserts `)`.
+
+<Tip>
+You can always tap the cursor into a specific position and manually insert `(` or `)` if the smart button chooses the wrong one.
+</Tip>
+
+### Degree / Radian toggle
+
+Tap the **Degree** or **Radian** toggle button (visible when scientific mode is open) to switch angle modes for all trigonometric functions. The result preview updates immediately.
+
+### INV
+
+Tap **INV** to switch the scientific function buttons to their inverse forms:
+
+| Normal | INV form |
+|---|---|
+| `sin` | `sin⁻¹` |
+| `cos` | `cos⁻¹` |
+| `tan` | `tan⁻¹` |
+| `ln` | `exp` |
+| `log` | `10^` |
+| `log₂` | `2^` |
+| `√` | `x²` (or `#` if modulo is enabled) |
+
+Tap **INV** again to return to the normal set.
+
+### Scientific mode toggle
+
+Tap the expand arrow button to reveal the scientific function rows. Tap it again (now pointing up) to collapse them. The degree/radian label is also hidden when scientific mode is collapsed.
+
+## Result display
+
+| Interaction | Action |
+|---|---|
+| Real-time preview | The result display updates continuously as you type, showing the current value of the expression |
+| Long press the result | Copies the displayed result to the clipboard (requires "Long click to copy value" enabled in Settings) |
+
+<Info>
+On Android 12 and below, a brief toast message confirms when a value has been copied. On Android 13 and above, the system clipboard confirmation UI is used instead.
+</Info>
+
+## History panel
+
+| Gesture | Action |
+|---|---|
+| Tap the history button | Opens or closes the history panel |
+| Swipe up from the bottom | Opens the history panel |
+| Tap a history entry | Loads that expression's value into the input field |
+| Swipe a history entry left or right | Deletes that entry (requires "Delete history on swipe" enabled in Settings) |
+| Press the back button while history is open | Collapses the history panel instead of exiting the app |

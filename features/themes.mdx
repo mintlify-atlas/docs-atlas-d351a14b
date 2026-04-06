@@ -1,0 +1,76 @@
+---
+title: "Themes"
+description: "Customize the appearance of OpenCalc with built-in light, dark, Amoled, and Material You themes."
+---
+
+OpenCalc ships with four visual styles. The selected theme is applied immediately — no app restart is required.
+
+---
+
+## Changing the theme
+
+<Steps>
+  <Step title="Open the menu">
+    Tap the three-dot menu button in the top-right corner of the app.
+  </Step>
+  <Step title="Open Settings">
+    Select **Settings** from the dropdown.
+  </Step>
+  <Step title="Tap Theme">
+    Tap the **Theme** preference to open the theme selector dialog.
+  </Step>
+  <Step title="Select a theme">
+    Choose your preferred style. The app reloads immediately with the new theme applied.
+  </Step>
+</Steps>
+
+---
+
+## Available themes
+
+<CardGroup cols={2}>
+  <Card title="System" icon="sun-moon">
+    Follows the device's day/night mode setting. On Android 12+, automatically uses Material You if dynamic colors are available. On older devices, falls back to the default light/dark theme.
+  </Card>
+  <Card title="Light" icon="sun">
+    Forces the app to use a light background regardless of the system setting.
+  </Card>
+  <Card title="Dark" icon="moon">
+    Forces a dark background regardless of the system setting.
+  </Card>
+  <Card title="Amoled" icon="circle-dot">
+    Pure black (`#000000`) background. Saves battery on OLED and AMOLED screens because black pixels are turned off completely.
+  </Card>
+</CardGroup>
+
+---
+
+## Material You (Android 12+)
+
+Material You generates a color palette from your current wallpaper and applies it across all system apps. When **System** is selected on a device running Android 12 or higher, OpenCalc automatically uses this dynamic palette.
+
+<Note>
+  Material You is only available when your device supports dynamic colors (`DynamicColors.isDynamicColorAvailable()` returns `true`). On older devices or devices without wallpaper-based theming, the System option falls back to the standard light/dark theme.
+</Note>
+
+The theme selector dialog labels the System option as **System (Material You)** when dynamic colors are available, so you can confirm at a glance whether it is active on your device.
+
+---
+
+## Amoled theme
+
+The Amoled theme sets the background to pure black and forces night mode. It is a good choice if:
+
+- Your phone has an OLED or AMOLED screen (most modern flagship and mid-range Android phones).
+- You frequently use the calculator in dark environments.
+- You want to maximize battery savings while using the app.
+
+<Tip>
+  On LCD screens, Amoled appears as a very dark theme rather than offering power savings, but it remains usable as a high-contrast dark option.
+</Tip>
+
+---
+
+## Theme reload behavior
+
+When you select a new theme, OpenCalc calls `finish()` on the current activity and immediately relaunches it with the new theme applied. Your current input and history are preserved — only the visual style changes.

@@ -1,0 +1,75 @@
+---
+title: "Introduction"
+description: "OpenCalc is a free, open-source Android calculator with a clean interface, scientific mode, and no tracking."
+---
+
+## What is OpenCalc?
+
+OpenCalc is a lightweight, open-source calculator for Android. Built for users who want a fast, privacy-respecting calculator without unnecessary bloat, it covers everything from everyday arithmetic to scientific functions — all in an APK under 2 MB.
+
+It has been downloaded more than 300,000 times across Google Play, F-Droid, IzzyOnDroid, and GitHub, and is actively maintained by the open-source community.
+
+## Key features
+
+<CardGroup cols={2}>
+  <Card title="Lightweight" icon="feather">
+    The APK weighs in at under 2 MB. No bundled third-party math libraries — OpenCalc uses its own custom algebra engine for full control over accuracy and size.
+  </Card>
+  <Card title="Scientific mode" icon="flask-conical">
+    Expand into a full scientific keyboard with trigonometric functions (sin, cos, tan and their inverses), logarithms (ln, log, log₂), exponents, square roots, constants (π, e), factorials, and more.
+  </Card>
+  <Card title="Themes" icon="palette">
+    Choose from Light, Dark, Amoled (true black for OLED screens), and Material You (dynamic color from your Android 12+ wallpaper).
+  </Card>
+  <Card title="Calculation history" icon="clock-rotate-left">
+    Every calculation is saved to a scrollable history panel. Tap any entry to paste it back into the input field. Swipe left or right to delete individual entries.
+  </Card>
+  <Card title="Landscape support" icon="rotate">
+    The layout adapts automatically to portrait and landscape orientations, giving you more room for complex expressions on wider screens.
+  </Card>
+  <Card title="Quick settings tile" icon="layout-grid">
+    Add OpenCalc to your Android quick settings panel to open the calculator directly from the notification shade — no need to unlock your phone.
+  </Card>
+  <Card title="Lock screen access" icon="lock-open">
+    OpenCalc can display on the lock screen so you can run calculations without unlocking your device.
+  </Card>
+  <Card title="No unnecessary permissions" icon="shield-check">
+    OpenCalc requests only the permissions it genuinely needs. There is no internet permission, no access to contacts, files, or location data.
+  </Card>
+</CardGroup>
+
+## Requirements
+
+- **Android 5.0 (Lollipop) or later** — `minSdk 21`
+- **Version:** 3.2.1 (`versionCode` 54)
+
+OpenCalc targets Android 14 (SDK 35) and is compiled with Kotlin on the JVM. It runs on any Android device released from 2014 onward.
+
+## Download
+
+OpenCalc is available from four sources. Choose the one that best fits your needs.
+
+| Source | Notes |
+|---|---|
+| [Google Play](https://play.google.com/store/apps/details?id=com.darkempire78.opencalculator) | Standard Android app store. Automatic updates. |
+| [F-Droid](https://f-droid.org/en/packages/com.darkempire78.opencalculator) | Free and open-source app repository. No Google services required. |
+| [IzzyOnDroid](https://apt.izzysoft.de/packages/com.darkempire78.opencalculator) | Alternative F-Droid repository with faster release cadence. |
+| [GitHub Releases](https://github.com/Darkempire78/OpenCalc/releases/latest) | Direct APK download. Useful for sideloading or CI/CD pipelines. |
+
+## App permissions
+
+OpenCalc requests only the permissions listed in its manifest:
+
+| Permission | Purpose |
+|---|---|
+| `VIBRATE` | Haptic feedback when tapping calculator buttons. |
+| `SYSTEM_ALERT_WINDOW` | Enables the app to display on the lock screen. |
+| `USE_FULL_SCREEN_INTENT` | Supports lock screen display and quick settings tile. |
+
+There is no `INTERNET` permission. OpenCalc never sends data off your device.
+
+## License
+
+OpenCalc is licensed under the **GNU General Public License v3.0 (GPL-3.0)**. The full license text is available in the [GitHub repository](https://github.com/Darkempire78/OpenCalc/blob/master/LICENSE).
+
+You are free to use, study, modify, and distribute the source code under the terms of the GPL-3.0. Any derivative work must also be distributed under the same license.

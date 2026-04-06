@@ -1,0 +1,147 @@
+---
+title: "Basic Calculations"
+description: "Perform everyday arithmetic in OpenCalc — addition, subtraction, multiplication, division, and more."
+---
+
+OpenCalc is designed for fast, frictionless arithmetic. This page covers every button and behavior you will encounter during day-to-day use.
+
+## Arithmetic operators
+
+<CardGroup cols={2}>
+  <Card title="Addition" icon="plus">
+    Tap **+** to add two values. Example: `12 + 8` → `20`.
+  </Card>
+  <Card title="Subtraction" icon="minus">
+    Tap **−** to subtract. You can also start an expression with **−** to enter a negative number.
+  </Card>
+  <Card title="Multiplication" icon="x">
+    Tap **×** to multiply. Example: `6 × 7` → `42`.
+  </Card>
+  <Card title="Division" icon="divide">
+    Tap **÷** to divide. Dividing by zero shows a **Division by 0** error inline.
+  </Card>
+</CardGroup>
+
+### Operator replacement
+
+If you tap an operator when the cursor is already sitting next to one, the existing operator is replaced rather than stacked. For example, typing `5 ×` and then tapping `÷` produces `5 ÷`. The one exception is **−**, which can be inserted after another operator to negate the next operand (e.g., `5 × −3`).
+
+---
+
+## Live preview (auto-compute)
+
+OpenCalc evaluates your expression continuously as you type. The result appears in the smaller display beneath the input field — you do not need to press **=** to see it.
+
+The preview updates on every keystroke. If the expression is incomplete or invalid, the preview is blank; it never shows a partial or misleading value.
+
+<Note>
+  The preview respects the current degree/radian mode and all active settings (precision, percent behavior, etc.), so what you see is exactly what **=** will confirm.
+</Note>
+
+---
+
+## The equals button
+
+Pressing **=** promotes the live-preview result into the main input field and clears the preview. The result is now the starting value for your next calculation.
+
+- If you immediately tap a **digit or decimal separator** after pressing **=**, the input is cleared and the new digit starts a fresh expression.
+- If you instead tap an **operator** (e.g., **+**), OpenCalc appends it to the result, letting you chain calculations without re-entering the number.
+- Moving the cursor manually after pressing **=** also unlocks the input without clearing it.
+
+---
+
+## Parentheses
+
+### Smart parenthesis button
+
+The single **(  )** button inserts an opening or closing parenthesis depending on context:
+
+- It opens `(` when all parentheses seen so far are balanced, or when the previous character is an operator or another `(`.
+- It closes `)` when there is an unmatched `(` and the next character is not an operator.
+
+This means you can build nested expressions by tapping one button repeatedly without tracking open/close counts yourself.
+
+<Tip>
+  When you press **=**, OpenCalc automatically appends any missing closing parentheses, so `sin(45` is treated as `sin(45)`.
+</Tip>
+
+### Split parenthesis option
+
+If you prefer separate `(` and `)` buttons, enable **Split parenthesis button** in Settings. This replaces the smart button and the AC (clear) button with two dedicated keys.
+
+---
+
+## Decimal separator
+
+The decimal button automatically uses the separator appropriate for your device locale — a **dot** (`.`) in most regions and a **comma** (`,`) in locales such as many European countries. The button icon updates to reflect this.
+
+Only one decimal separator is allowed per number. Tapping the decimal button again when the current number already contains one has no effect.
+
+---
+
+## Percent (%)
+
+The **%** button performs *relative percentage*, not a plain division by 100:
+
+| Expression | Result | Explanation |
+|---|---|---|
+| `100 + 10%` | `110` | 10% of 100 is 10; add to 100 |
+| `200 − 25%` | `150` | 25% of 200 is 50; subtract from 200 |
+| `50 × 20%` | `10` | 20% of 50 (÷ 100 for × context) |
+| `10%` alone | `0.1` | No preceding operand — plain ÷100 |
+
+---
+
+## Exponentiation (^)
+
+Tap **^** to raise a number to a power. Example: `2^10` → `1024`. Fractional exponents are supported (`8^(1/3)` → `2`). Attempting a fractional power of a negative base (e.g., `(-5)^0.5`) produces a **Requires real number** error.
+
+---
+
+## Modulo (#)
+
+The modulo button is **optional** and hidden by default. Enable it in Settings → **Add modulo button**. Once enabled, **#** computes the remainder of integer division. Example: `17 # 5` → `2`.
+
+<Note>
+  When the modulo button is enabled, the INV variant of the √ button changes to insert **#** instead of **x²**. See [Scientific Mode](/features/scientific-mode) for details.
+</Note>
+
+---
+
+## Backspace
+
+| Gesture | Action |
+|---|---|
+| Single tap | Deletes the character immediately to the left of the cursor |
+| Long press | Clears the entire input field and the live preview |
+
+When deleting a function such as `sin(` or `cos⁻¹(`, a single tap removes the entire function token at once rather than character by character.
+
+---
+
+## Zero button — multi-zero shortcut
+
+Long-pressing **0** opens a popup with two options:
+
+- **00** — inserts double zero
+- **000** — inserts triple zero
+
+This is useful when entering large numbers such as `1,000,000` without repeated taps.
+
+---
+
+## Copying the result
+
+Long-press the **result display** (the smaller text below the input) to copy its value to the clipboard. On Android 12 and lower, a toast notification confirms the copy. On Android 13 and higher, the system shows its own clipboard confirmation and no toast appears.
+
+<Note>
+  This feature requires **Long click to copy value** to be enabled in Settings (it is on by default).
+</Note>
+
+---
+
+## Auto-save to history while typing
+
+When **Auto-save calculation without equal button** is enabled in Settings (the default), each in-progress calculation is saved to history automatically as you type — you do not need to press **=**. The history entry is updated in place as the expression changes, so you won't see duplicate entries for the same calculation.
+
+See [Calculation History](/features/history) for full details on managing saved calculations.

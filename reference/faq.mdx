@@ -1,0 +1,78 @@
+---
+title: "Frequently Asked Questions"
+description: "Answers to the most common questions about OpenCalc."
+---
+
+<AccordionGroup>
+  <Accordion title="Why does OpenCalc use its own math engine instead of a library like mXparser?">
+    OpenCalc dropped mXparser in v2.0.0 for two reasons:
+
+    1. **Freedom and flexibility.** mXparser has known accuracy issues and missing features. A custom implementation gives full control over every calculation.
+    2. **Smaller binary.** mXparser is roughly three times larger than the entire OpenCalc app. The custom engine keeps the APK under 2 MB.
+  </Accordion>
+
+  <Accordion title="What Android version does OpenCalc support?">
+    OpenCalc requires **Android 5.0 (API level 21)** or later.
+  </Accordion>
+
+  <Accordion title="Is OpenCalc free?">
+    Yes. OpenCalc is completely free, with no ads and no in-app purchases. It is open-source and licensed under GPLv3.
+  </Accordion>
+
+  <Accordion title="Does OpenCalc collect any data?">
+    No. OpenCalc requests no internet permission and collects no telemetry or personal data. The permissions it does use are `VIBRATE` (haptic feedback), `SYSTEM_ALERT_WINDOW` and `USE_FULL_SCREEN_INTENT` (for lock screen display). None of these involve data collection or network access.
+  </Accordion>
+
+  <Accordion title="How do I change the language?">
+    <Tabs>
+      <Tab title="Android 13+">
+        Go to **Settings** → **Apps** → **OpenCalc** → **Language** and choose your preferred language. This per-app language setting overrides the system locale.
+      </Tab>
+      <Tab title="Android 12 and below">
+        OpenCalc follows the system language. Change it in **Settings** → **System** → **Language**.
+      </Tab>
+    </Tabs>
+
+    You can help add or improve translations on [Hosted Weblate](https://hosted.weblate.org/engage/opencalc/).
+  </Accordion>
+
+  <Accordion title="How do I enable Material You theming?">
+    Material You dynamic colors require **Android 12+** and a device that supports them (most Pixel phones and many other Android 12+ devices).
+
+    <Steps>
+      <Step title="Open the app menu">
+        Tap the three-dot menu icon in the top-right corner of OpenCalc.
+      </Step>
+      <Step title="Open Settings">
+        Tap **Settings**.
+      </Step>
+      <Step title="Select the theme">
+        Tap **Theme** and choose **System (Material You)**.
+      </Step>
+    </Steps>
+  </Accordion>
+
+  <Accordion title="How do I delete a single history entry?">
+    Swipe the entry left or right to delete it.
+
+    <Note>
+      This requires **Delete history on swipe** to be enabled in **Settings**. If the option is disabled, swipe gestures on history entries have no effect.
+    </Note>
+  </Accordion>
+
+  <Accordion title="What is the maximum number of decimal places?">
+    The precision is configurable. Go to **Settings → Number Precision** to set the number of decimal places shown in results. The default is **10**.
+  </Accordion>
+
+  <Accordion title="Can I use OpenCalc on the lock screen?">
+    Yes. By default, OpenCalc is allowed to display over the lock screen so you can perform quick calculations without unlocking your device. If you prefer to disable this, go to **Settings** and turn off the lock-screen option.
+  </Accordion>
+
+  <Accordion title="How do I report a bug or request a feature?">
+    Open an issue on GitHub at [github.com/Darkempire78/OpenCalc/issues](https://github.com/Darkempire78/OpenCalc/issues).
+
+    <Tip>
+      For significant changes or new features, open an issue to discuss the idea before submitting a pull request. This avoids wasted effort if the direction does not align with the project.
+    </Tip>
+  </Accordion>
+</AccordionGroup>

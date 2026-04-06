@@ -1,0 +1,109 @@
+---
+title: "Supported Functions & Operators"
+description: "Complete reference for every operator, function, and constant that OpenCalc supports."
+---
+
+## Basic operators
+
+| Operator | Symbol | Example | Result |
+|---|---|---|---|
+| Addition | `+` | `5 + 3` | `8` |
+| Subtraction | `-` | `10 - 4` | `6` |
+| Multiplication | `×` | `6 × 7` | `42` |
+| Division | `÷` | `15 ÷ 4` | `3.75` |
+| Exponentiation | `^` | `2^10` | `1024` |
+| Modulo | `#` | `17 # 5` | `2` |
+| Parentheses | `( )` | `(2 + 3) × 4` | `20` |
+
+<Note>
+The `×` and `÷` symbols are what appear on the buttons. Internally they are converted to `*` and `/` before evaluation.
+</Note>
+
+<Info>
+The modulo operator `#` is optional. Enable it in **Settings → Add modulo button**. When enabled, the INV+√ button changes to `#`.
+</Info>
+
+## Scientific functions
+
+Trigonometric functions respect the current angle mode (degree or radian). Toggle between modes using the **Degree / Radian** button in scientific mode.
+
+| Function | Button label | Example (degree mode) | Result |
+|---|---|---|---|
+| Sine | `sin` | `sin(30)` | `0.5` |
+| Cosine | `cos` | `cos(60)` | `0.5` |
+| Tangent | `tan` | `tan(45)` | `1` |
+| Arcsine | `sin⁻¹` (INV + sin) | `sin⁻¹(0.5)` | `30` |
+| Arccosine | `cos⁻¹` (INV + cos) | `cos⁻¹(0.5)` | `60` |
+| Arctangent | `tan⁻¹` (INV + tan) | `tan⁻¹(1)` | `45` |
+| Natural log | `ln` | `ln(e)` | `1` |
+| Log base 10 | `log` | `log(100)` | `2` |
+| Log base 2 | `log₂` | `log₂(8)` | `3` |
+| Exponential | `exp` (INV + ln) | `exp(1)` | `2.71828...` |
+| Power of 10 | `10^` (INV + log) | `10^3` | `1000` |
+| Power of 2 | `2^` (INV + log₂) | `2^4` | `16` |
+| Square root | `√` | `√9` | `3` |
+| Factorial | `!` | `5!` | `120` |
+
+<Tip>
+Tap **INV** to switch all function buttons to their inverse forms. Tap **INV** again to switch back.
+</Tip>
+
+### Factorial with non-integers
+
+For non-integer inputs, `x!` uses the Lanczos approximation of the gamma function: `Γ(x + 1)`. Integer factorials up to 2999 are computed exactly using `BigInteger` arithmetic. At 3000 or above, the result is reported as infinity.
+
+## Constants
+
+| Constant | Symbol | Approximate value |
+|---|---|---|
+| Pi | `π` | `3.14159265358979...` |
+| Euler's number | `e` | `2.71828182845904...` |
+
+Both constants are available as dedicated buttons in scientific mode and are recognized anywhere in an expression.
+
+## Special syntax
+
+### Implicit multiplication
+
+OpenCalc automatically inserts a `×` operator when the expression would otherwise be ambiguous:
+
+```text
+2π        → 2 × π
+3(4 + 5)  → 3 × (4 + 5)
+2e        → 2 × e
+(2)(3)    → (2) × (3)
+```
+
+### Percentage
+
+The `%` operator behaves differently depending on context:
+
+| Expression | Interpretation | Result |
+|---|---|---|
+| `50%` | Standalone: divides by 100 | `0.5` |
+| `100 + 10%` | After `+` or `-`: relative to base | `110` |
+| `200 × 10%` | After `×` or `÷`: plain division by 100 | `20` |
+
+### Scientific notation input
+
+Use `E` to enter numbers in scientific notation:
+
+```text
+1.5E3  →  1.5 × 10^3  →  1500
+```
+
+### Auto-closing parentheses
+
+If an expression has unclosed parentheses (e.g., `sin(30`), OpenCalc automatically appends the missing `)` before evaluation.
+
+## Error conditions
+
+When an expression cannot be evaluated, OpenCalc displays an error message and highlights the input in red.
+
+| Error flag | When it occurs | Example |
+|---|---|---|
+| `division_by_0` | Divisor is zero | `5 ÷ 0` |
+| `domain_error` | Input is outside the function's valid domain | `ln(-1)`, `sin⁻¹(2)`, `tan(90°)` |
+| `syntax_error` | Expression is malformed or unrecognized | `++5`, bare `.` |
+| `is_infinity` | Result overflows or exponent exceeds 10 000 | `9999^9999` |
+| `require_real_number` | Result would be complex | `(-5)^0.5`, `√(-4)` |

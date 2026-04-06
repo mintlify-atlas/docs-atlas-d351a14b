@@ -1,0 +1,91 @@
+{
+  "projectType": "general",
+  "projectName": "OpenCalc",
+  "projectDescription": "A lightweight, open-source Android calculator app with scientific mode, customizable themes, and calculation history, downloaded over 300,000 times.",
+  "theme": "almond",
+  "primaryColor": "#94cb04",
+  "lightColor": "#545454",
+  "darkColor": null,
+  "navigation": {
+    "groups": [
+      {
+        "group": "Get Started",
+        "pages": [
+          "introduction",
+          "installation",
+          "quickstart"
+        ]
+      },
+      {
+        "group": "Using OpenCalc",
+        "pages": [
+          "features/basic-calculations",
+          "features/scientific-mode",
+          "features/history",
+          "features/themes",
+          "features/quick-settings-tile"
+        ]
+      },
+      {
+        "group": "Settings & Customization",
+        "pages": [
+          "settings/overview",
+          "settings/display",
+          "settings/behavior"
+        ]
+      },
+      {
+        "group": "Contributing",
+        "pages": [
+          "contributing/getting-started",
+          "contributing/translations",
+          "contributing/architecture"
+        ]
+      },
+      {
+        "group": "Reference",
+        "pages": [
+          "reference/supported-functions",
+          "reference/keyboard-shortcuts",
+          "reference/faq"
+        ]
+      }
+    ]
+  },
+  "keyFeatures": [
+    "Lightweight APK (~2MB) with no unnecessary permissions",
+    "Custom algebra engine built from scratch (no third-party math library)",
+    "Scientific mode with trigonometric, logarithmic, and factorial functions",
+    "Dark, Light, Amoled, and Material You themes",
+    "Calculation history with swipe-to-delete and configurable size",
+    "Quick Settings tile for instant access from notification shade",
+    "Available on locked screen without unlocking",
+    "Portrait and landscape orientation support",
+    "Degree and radian mode toggle",
+    "International and Indian numbering system support",
+    "40+ language translations via Weblate",
+    "Available on Google Play, F-Droid, and IzzyOnDroid"
+  ],
+  "publicApiSurface": [
+    "Calculator.evaluate(equation: String, isDegreeModeActivated: Boolean): BigDecimal",
+    "Calculator.factorial(number: BigDecimal): BigDecimal",
+    "Expression.getCleanExpression(calculation: String, decimalSeparatorSymbol: String, groupingSeparatorSymbol: String): String",
+    "Expression.addParenthesis(calculation: String): String",
+    "NumberFormatter.format(text: String, decimalSeparatorSymbol: String, groupingSeparatorSymbol: String, numberingSystem: NumberingSystem): String",
+    "NumberingSystem.INTERNATIONAL",
+    "NumberingSystem.INDIAN",
+    "MyPreferences.theme",
+    "MyPreferences.vibrationMode",
+    "MyPreferences.historySize",
+    "MyPreferences.numberPrecision",
+    "MyPreferences.scientificMode",
+    "MyPreferences.useRadiansByDefault",
+    "MyPreferences.numberIntoScientificNotation",
+    "MyPreferences.getHistory(): MutableList<History>",
+    "MyPreferences.saveHistory(history: List<History>)",
+    "Themes.getTheme(): Int",
+    "Themes.openDialogThemeSelector(context: Context)",
+    "MyTileService (Quick Settings Tile)",
+    "ScientificModeTypes.NOT_ACTIVE / ACTIVE / OFF"
+  ]
+}

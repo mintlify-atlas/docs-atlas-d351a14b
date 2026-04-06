@@ -1,0 +1,128 @@
+---
+title: "Code architecture"
+description: "An overview of how OpenCalc is structured — from the package layout to the custom calculator engine."
+---
+
+OpenCalc is a standard single-module Android app written in Kotlin. The application ID is `com.darkempire78.opencalculator` and the source root lives under `app/src/main/java/com/darkempire78/opencalculator/`.
+
+## Package structure
+
+<CardGroup cols={2}>
+  <Card title="activities/" icon="layout-panel-top">
+    Entry points for the app's three screens:
+    - `MainActivity` — the calculator UI
+    - `SettingsActivity` — user preferences
+    - `AboutActivity` — credits and version info
+  </Card>
+  <Card title="calculator/" icon="calculator">
+    The math engine. `Calculator.kt` is the recursive descent parser and evaluator. The `parser/` sub-package contains `Expression.kt` (input pre-processor) and `NumberFormatter.kt` (display formatting).
+  </Card>
+  <Card title="history/" icon="clock">
+    History feature components: the `History` data class and `HistoryAdapter` for the sliding panel list.
+  </Card>
+  <Card title="services/" icon="bolt">
+    `MyTileService` — implements the Android Quick Settings tile so users can open the calculator directly from the notification shade.
+  </Card>
+  <Card title="util/" icon="wrench">
+    Small utility classes: `ScientificMode` (toggle scientific layout) and `MyPreferenceMigrator` (handles settings schema migrations between versions).
+  </Card>
+  <Card title="dialogs/" icon="message-square">
+    `DonationDialog` — the in-app donation prompt.
+  </Card>
+</CardGroup>
+
+Other top-level files in the root package:
+
+- **`MyPreferences.kt`** — typed wrapper around `SharedPreferences`, the single source of truth for all user settings.
+- **`Themes.kt`** — applies the selected theme (Light, Dark, Amoled, Material You) at runtime.
+- **`TextSizeAdjuster.kt`** — dynamically scales the result text so it fits within the display area.
+- **`OpenCalcApp`** — the `Application` subclass registered in `AndroidManifest.xml`.
+
+## Calculator engine
+
+OpenCalc uses a **custom recursive descent parser** written from scratch. No third-party math library is used — this keeps the APK small (~2 MB) and gives full control over precision and operator behavior.
+
+<Info>
+  Prior to v2.0.0, OpenCalc used mXparser. The custom engine replaced it to improve accuracy, add missing features, and reduce APK size. See the README for full details.
+</Info>
+
+### Expression pre-processing (`Expression.kt`)
+
+Before evaluation, `Expression.getCleanExpression()` transforms the raw input string into a normalized form that the parser can consume. The steps applied in order are:
+
+1. **Symbol replacement** — UI symbols are mapped to ASCII equivalents:
+   - `×` → `*`, `÷` → `/`
+   - `log₂(` → `logtwo(`, `log(` → `logten(`
+   - `cos⁻¹` → `arcco`, `sin⁻¹` → `arcsi`, `tan⁻¹` → `arcta`
+   - `exp` → `xp` (to avoid conflict with the constant `e`)
+   - `E` (scientific notation) → `*10^`
+2. **Implicit multiplication** — `addMultiply()` inserts `*` where it is implied, for example `2(3)` → `2*(3)`, `πe` → `π*e`, `2sin(x)` → `2*sin(x)`.
+3. **Square root expansion** — `√5` is rewritten as `sqrt(5)`.
+4. **Percentage handling** — context-aware: `50+10%` becomes `50+50*(10/100)`, while standalone `10%` becomes `(10/100)`.
+5. **Factorial expansion** — `5!` is rewritten as `factorial(5)`.
+6. **Parenthesis balancing** — `addParenthesis()` appends missing closing parentheses and flags a `syntax_error` if there are unmatched closing parentheses.
+
+### Evaluation (`Calculator.kt`)
+
+`Calculator.evaluate(equation, isDegreeModeActivated)` parses the normalized string and returns a `BigDecimal` result. The parser is structured as a standard recursive descent grammar:
+
+```
+expression → term (('+' | '-') term)*
+term       → factor (('*' | '/' | '#') factor)*
+factor     → number | constant | function | '(' expression ')'
+```
+
+`#` is the internal modulo operator (mapped from `%` after percentage processing).
+
+All intermediate values and results are `BigDecimal`, providing arbitrary-precision integer arithmetic and configurable decimal precision (controlled by `numberPrecisionDecimal`).
+
+#### Error flags
+
+The parser communicates errors through module-level boolean flags rather than exceptions:
+
+| Flag | Meaning |
+|---|---|
+| `division_by_0` | Division or modulo by zero |
+| `domain_error` | Input outside the function's domain (e.g., `ln(-1)`, `tan(90°)`) |
+| `syntax_error` | Malformed expression |
+| `is_infinity` | Result overflows (e.g., `9999^9999`, `3000!`) |
+| `require_real_number` | Complex result, e.g., `(-5)^0.5` |
+
+#### Supported operations
+
+| Category | Operations |
+|---|---|
+| Arithmetic | `+`, `-`, `×`, `÷`, `^` |
+| Percentage / modulo | `%`, `#` (internal) |
+| Factorial | `!` (integer and gamma approximation via Lanczos for non-integers) |
+| Roots | `√`, `sqrt()` |
+| Trigonometry | `sin`, `cos`, `tan`, `sin⁻¹`, `cos⁻¹`, `tan⁻¹` (degree and radian modes) |
+| Logarithms | `ln`, `log` (base 10), `log₂` |
+| Exponential | `exp` |
+| Constants | `π`, `e` |
+
+### Number formatting (`NumberFormatter.kt`)
+
+`NumberFormatter.format()` handles display formatting of numbers in the UI. It supports:
+
+- **International numbering system** — groups digits in threes (e.g., `1,000,000`).
+- **Indian numbering system** — groups the last three digits, then pairs (e.g., `10,00,000`).
+- Configurable decimal separator symbol and grouping separator symbol, so the display respects the user's locale settings.
+
+## History persistence
+
+Calculation history is stored in `SharedPreferences` as a JSON string. Serialization and deserialization use **Gson**, which is the only data-persistence dependency in the project. The `History` data class defines the schema, and `HistoryAdapter` binds the data to the sliding panel RecyclerView.
+
+## Dependencies
+
+Key runtime dependencies from `app/build.gradle.kts`:
+
+| Dependency | Purpose |
+|---|---|
+| `androidx.core.ktx` | Kotlin Android extensions |
+| `androidx.appcompat` | Backwards-compatible activities and themes |
+| `androidx.preference.ktx` | Settings screen framework |
+| `material` | Material Design components |
+| `androidslidinguppanel` | Sliding history panel |
+| `gson` | JSON serialization for history |
+| `androidx.lifecycle.viewmodel.ktx` | ViewModel support |

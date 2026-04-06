@@ -1,0 +1,111 @@
+---
+title: "Calculation History"
+description: "View, restore, and manage your past calculations in OpenCalc's history panel."
+---
+
+OpenCalc records your calculations in a scrollable panel that slides up from the bottom of the screen. History persists across app restarts and is stored locally on your device.
+
+---
+
+## Opening the history panel
+
+<Steps>
+  <Step title="Tap the history button">
+    Tap the arrow button at the bottom of the screen to slide the history panel up.
+  </Step>
+  <Step title="Or swipe up from the bottom">
+    You can also swipe up from the bottom edge of the calculator to reveal the panel.
+  </Step>
+  <Step title="Dismiss with the back gesture or button">
+    Swipe down or press the system back button to collapse the panel without leaving the app.
+  </Step>
+</Steps>
+
+---
+
+## What each history entry stores
+
+Every entry records three pieces of information:
+
+| Field | Description |
+|---|---|
+| **Expression** | The full calculation as it appeared in the input field (e.g., `12 × (3 + 4)`) |
+| **Result** | The computed answer at the time the entry was saved (e.g., `84`) |
+| **Timestamp** | The time the calculation was recorded, stored as a Unix millisecond epoch |
+
+---
+
+## Restoring a past calculation
+
+Tap any history entry to load its **result** into the main input field. You can then continue building on that value — for example, tap an entry showing `84` and immediately type `+ 16` to continue.
+
+---
+
+## Deleting history entries
+
+### Swipe to delete
+
+Swipe any history entry left or right to delete it. This behavior can be turned off in Settings → **Delete history entries by swiping** (enabled by default).
+
+### Clear all history
+
+<Steps>
+  <Step title="Open the app menu">
+    Tap the three-dot menu button in the top-right corner of the app.
+  </Step>
+  <Step title="Tap Clear history">
+    Select **Clear history** from the menu. All entries are removed immediately from both the panel and persistent storage.
+  </Step>
+</Steps>
+
+<Warning>
+  Clearing history is permanent. There is no undo.
+</Warning>
+
+---
+
+## Auto-save while typing
+
+When **Auto-save calculation without equal button** is enabled (the default), OpenCalc saves your in-progress calculation to history as you type — you do not need to press **=**.
+
+The behavior is designed to avoid clutter:
+
+- A new history entry is created when you start a new calculation.
+- As you continue editing the **same** calculation, the existing entry is updated in place (expression, result, and timestamp are refreshed).
+- When you start an entirely new calculation, a fresh entry is created.
+
+To disable this and only save on **=**, turn off **Auto-save calculation without equal button** in Settings.
+
+---
+
+## History size limit
+
+The maximum number of stored entries is configurable in Settings → **History size** (default: **50**).
+
+| Setting value | Behavior |
+|---|---|
+| A positive number (e.g., 50) | Oldest entries are removed when the limit is exceeded |
+| **Unlimited** (-1 internally) | All entries are kept indefinitely |
+| **0 / Disabled** | History is disabled entirely; the panel button is hidden |
+
+<Note>
+  When you reduce the history size below the current number of stored entries, OpenCalc immediately trims the oldest entries to fit the new limit.
+</Note>
+
+---
+
+## Persistence
+
+History is serialized to JSON using Gson and stored in Android's `SharedPreferences`. Entries survive:
+
+- App restarts
+- Device reboots
+- Screen rotation
+
+History is **not** synced to the cloud and remains local to the device.
+
+---
+
+## When history is disabled
+
+If the history size is set to **0**, the history button is hidden and the sliding panel is disabled. No calculations are saved, and tapping **=** or typing does not trigger any storage writes.
